@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Test BPM</title>
+</head>
+<body>
+    <text id="notif"></text>
+    <br>
+    <button id="beat">Beat</button>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script>
+        let data = []
+        $("#beat").on("click", function (e){
+            update()
+        })
+        function update(){
+            if (Date.now()-data[data.length-1]>5000){
+                data=[];
+            }
+            data.push(Date.now());
+            if (data.length>5){
+                let mean=0
+                for (let i=1;i<data.length;i++){
+                    mean+=data[i]-data[i-1]
+                }
+                mean/=(data.length-1)*1000
+                $("#notif").text(60/mean)
+            }
+            if (data.length>15){
+                data.shift()
+            }
+        }
+    </script>
+</body>
+</html>
