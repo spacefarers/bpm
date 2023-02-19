@@ -34,7 +34,7 @@
                     mean+=data[i]-data[i-1]
                 }
                 mean/=(data.length-1)*1000
-                $("#text_alert").text(60/mean)
+                $("#text_alert").text(Math.round(60/mean)+"bpm")
             } else {
                 $("#text_alert").text("Gathering Data...")
             }
