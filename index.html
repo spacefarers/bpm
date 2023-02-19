@@ -5,13 +5,13 @@
     <title>Test BPM</title>
 </head>
 <body>
-    <text id="notif"></text>
+    <text id="text_alert"></text>
     <br>
     <button id="beat">Beat</button>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script>
         let data = []
-        $("#beat").on("click", function (e){
+        $("#beat").on("click", function (){
             update()
         })
         $(document).on('keypress',function(e) {
@@ -30,7 +30,7 @@
                     mean+=data[i]-data[i-1]
                 }
                 mean/=(data.length-1)*1000
-                $("#notif").text(60/mean)
+                $("#text_alert").text(60/mean)
             }
             if (data.length>15){
                 data.shift()
